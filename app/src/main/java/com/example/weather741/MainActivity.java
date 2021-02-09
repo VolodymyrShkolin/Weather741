@@ -9,9 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.weather741.API.Api;
-import com.example.weather741.API.Init;
+import com.example.weather741.API.Request;
 import com.example.weather741.API.Result;
-import com.example.weather741.Data.WeatherData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Result result;
     Button btnSearch;
     double temp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,26 +43,33 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 city = etText.getText().toString();
 
-                Api api = new Init().buildRetrofitConfig();
-                Call<WeatherData> call = api.getWeatherDateByCity(city, Api.key, Api.units);
-
-                call.enqueue(new Callback<WeatherData>() {
-                    @Override
-                    public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
-                        temp = response.body().getMain().getTemp();
-
-                        tempResult.setText(temp + " ");
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<WeatherData> call, Throwable t) {
-
-                    }
-                });
+                        go();
 
             }
         });
 
+    }
+
+
+
+
+
+    private void go(){
+        Api api = new Request().buildRetrofitConfig();
+        Call<WeatherData> call = api.getWeatherDateByCity(city, Api.key, Api.cnt);
+
+        call.enqueue(new Callback<WeatherData>() {
+            @Override
+            public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
+                temp = response.body().getMain().getTemp();
+                tempResult.setText(temp + " ");
+
+            }
+
+            @Override
+            public void onFailure(Call<WeatherData> call, Throwable t) {
+
+            }
+        });
     }
 }

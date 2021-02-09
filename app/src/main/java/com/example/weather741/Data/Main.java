@@ -8,7 +8,13 @@ public class Main{
 	private double temp;
 
 	@SerializedName("temp_min")
-	private int tempMin;
+	private double tempMin;
+
+	@SerializedName("grnd_level")
+	private int grndLevel;
+
+	@SerializedName("temp_kf")
+	private double tempKf;
 
 	@SerializedName("humidity")
 	private int humidity;
@@ -16,18 +22,29 @@ public class Main{
 	@SerializedName("pressure")
 	private int pressure;
 
+	@SerializedName("sea_level")
+	private int seaLevel;
+
 	@SerializedName("feels_like")
 	private double feelsLike;
 
 	@SerializedName("temp_max")
-	private int tempMax;
+	private double tempMax;
 
 	public double getTemp(){
 		return temp;
 	}
 
-	public int getTempMin(){
+	public double getTempMin(){
 		return tempMin;
+	}
+
+	public int getGrndLevel(){
+		return grndLevel;
+	}
+
+	public double getTempKf(){
+		return tempKf;
 	}
 
 	public int getHumidity(){
@@ -38,11 +55,15 @@ public class Main{
 		return pressure;
 	}
 
+	public int getSeaLevel(){
+		return seaLevel;
+	}
+
 	public double getFeelsLike(){
 		return feelsLike;
 	}
 
-	public int getTempMax(){
+	public double getTempMax(){
 		return tempMax;
 	}
 }

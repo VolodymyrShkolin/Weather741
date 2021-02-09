@@ -5,94 +5,38 @@ import com.google.gson.annotations.SerializedName;
 
 public class WeatherData{
 
-	@SerializedName("visibility")
-	private int visibility;
+	@SerializedName("city")
+	private City city;
 
-	@SerializedName("timezone")
-	private int timezone;
-
-	@SerializedName("main")
-	private Main main;
-
-	@SerializedName("clouds")
-	private Clouds clouds;
-
-	@SerializedName("sys")
-	private Sys sys;
-
-	@SerializedName("dt")
-	private int dt;
-
-	@SerializedName("coord")
-	private Coord coord;
-
-	@SerializedName("weather")
-	private List<WeatherItem> weather;
-
-	@SerializedName("name")
-	private String name;
+	@SerializedName("cnt")
+	private int cnt;
 
 	@SerializedName("cod")
-	private int cod;
+	private String cod;
 
-	@SerializedName("id")
-	private int id;
+	@SerializedName("message")
+	private int message;
 
-	@SerializedName("base")
-	private String base;
+	@SerializedName("list")
+	private List<ListItem> list;
 
-	@SerializedName("wind")
-	private Wind wind;
-
-	public int getVisibility(){
-		return visibility;
+	public City getCity(){
+		return city;
 	}
 
-	public int getTimezone(){
-		return timezone;
+	public int getCnt(){
+		return cnt;
 	}
 
-	public Main getMain(){
-		return main;
-	}
-
-	public Clouds getClouds(){
-		return clouds;
-	}
-
-	public Sys getSys(){
-		return sys;
-	}
-
-	public int getDt(){
-		return dt;
-	}
-
-	public Coord getCoord(){
-		return coord;
-	}
-
-	public List<WeatherItem> getWeather(){
-		return weather;
-	}
-
-	public String getName(){
-		return name;
-	}
-
-	public int getCod(){
+	public String getCod(){
 		return cod;
 	}
 
-	public int getId(){
-		return id;
+	public int getMessage(){
+		return message;
 	}
 
-	public String getBase(){
-		return base;
-	}
-
-	public Wind getWind(){
-		return wind;
+	public List<ListItem> getList(){
+		return list;
 	}
 }

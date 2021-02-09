@@ -7,12 +7,12 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Init {
+public class Request {
 
 
     public Api buildRetrofitConfig(){
         OkHttpClient.Builder httpClient = getBaseHttpConfig();
-        Retrofit.Builder retrofit = new Retrofit.Builder()
+        retrofit2.Retrofit.Builder retrofit = new retrofit2.Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
                 .client(httpClient.build())
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()));

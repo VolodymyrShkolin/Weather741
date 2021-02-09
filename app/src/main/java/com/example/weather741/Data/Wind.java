@@ -8,13 +8,13 @@ public class Wind{
 	private int deg;
 
 	@SerializedName("speed")
-	private int speed;
+	private double speed;
 
 	public int getDeg(){
 		return deg;
 	}
 
-	public int getSpeed(){
+	public double getSpeed(){
 		return speed;
 	}
 }
