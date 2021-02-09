@@ -1,52 +1,67 @@
 package com.example.weather741;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+
 
 import com.example.weather741.API.Api;
 import com.example.weather741.API.Request;
-import com.example.weather741.API.Result;
+
+import com.example.weather741.Data.ListItem;
+import com.example.weather741.Data.WeatherForecastResult;
+import com.example.weather741.RecyclerView.RecyclerViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText etText;
-    TextView tempResult;
-    String city;
-    Result result;
-    Button btnSearch;
-    double temp;
+    RecyclerView date_dimeRV;
+    GridLayoutManager gridLayoutManager;
+    RecyclerViewAdapter adapter;
 
+ //   List<WeatherData> weatherData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        result = new Result();
+        date_dimeRV = findViewById(R.id.recyclerView);
+        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+        date_dimeRV.setLayoutManager(gridLayoutManager);
 
-        etText = findViewById(R.id.etText);
-        tempResult = findViewById(R.id.tepmResult);
+      //  weatherData = new ArrayList<>();
+        Api api = new Request().buildRetrofitConfig();
+        Call<WeatherForecastResult>call = api.getWeatherForecastResult(Api.city, Api.key, Api.cnt);
 
-        btnSearch = findViewById(R.id.btnSearch);
-
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        call.enqueue(new Callback<WeatherForecastResult>() {
             @Override
-            public void onClick(View v) {
-                city = etText.getText().toString();
+            public void onResponse(Call <WeatherForecastResult> call, Response <WeatherForecastResult> response) {
+                WeatherForecastResult data = response.body();
+             //   adapter.updateList(data);
 
-                        go();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call <WeatherForecastResult> call, Throwable t) {
 
             }
         });
+
+        adapter = new RecyclerViewAdapter( new ArrayList<>());
+        date_dimeRV.setAdapter(adapter);
 
     }
 
@@ -55,21 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void go(){
-        Api api = new Request().buildRetrofitConfig();
-        Call<WeatherData> call = api.getWeatherDateByCity(city, Api.key, Api.cnt);
 
-        call.enqueue(new Callback<WeatherData>() {
-            @Override
-            public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
-                temp = response.body().getMain().getTemp();
-                tempResult.setText(temp + " ");
-
-            }
-
-            @Override
-            public void onFailure(Call<WeatherData> call, Throwable t) {
-
-            }
-        });
     }
 }

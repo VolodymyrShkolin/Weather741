@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class ListItem{
 
 	@SerializedName("dt")
-	private int dt;
+	public int dt;
 
 	@SerializedName("pop")
 	private int pop;
@@ -15,7 +15,7 @@ public class ListItem{
 	private int visibility;
 
 	@SerializedName("dt_txt")
-	private String dtTxt;
+	public String dtTxt;
 
 	@SerializedName("snow")
 	private Snow snow;

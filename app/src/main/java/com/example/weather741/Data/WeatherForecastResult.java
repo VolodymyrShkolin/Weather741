@@ -3,7 +3,7 @@ package com.example.weather741.Data;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class WeatherData{
+public class WeatherForecastResult {
 
 	@SerializedName("city")
 	private City city;
@@ -18,7 +18,7 @@ public class WeatherData{
 	private int message;
 
 	@SerializedName("list")
-	private List<ListItem> list;
+	public List<ListItem> list;
 
 	public City getCity(){
 		return city;
