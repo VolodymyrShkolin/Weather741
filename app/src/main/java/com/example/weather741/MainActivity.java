@@ -5,12 +5,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Adapter;
 
 
 import com.example.weather741.API.Api;
 import com.example.weather741.API.Request;
 
-import com.example.weather741.Data.ListItem;
 import com.example.weather741.Data.WeatherForecastResult;
 import com.example.weather741.RecyclerView.RecyclerViewAdapter;
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     GridLayoutManager gridLayoutManager;
     RecyclerViewAdapter adapter;
 
- //   List<WeatherData> weatherData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +39,16 @@ public class MainActivity extends AppCompatActivity {
         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         date_dimeRV.setLayoutManager(gridLayoutManager);
 
-      //  weatherData = new ArrayList<>();
+
         Api api = new Request().buildRetrofitConfig();
         Call<WeatherForecastResult>call = api.getWeatherForecastResult(Api.city, Api.key, Api.cnt);
+
 
         call.enqueue(new Callback<WeatherForecastResult>() {
             @Override
             public void onResponse(Call <WeatherForecastResult> call, Response <WeatherForecastResult> response) {
-                WeatherForecastResult data = response.body();
-             //   adapter.updateList(data);
 
-
-
-
+                adapter = new RecyclerViewAdapter(response.body().getList());
             }
 
             @Override
@@ -60,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new RecyclerViewAdapter( new ArrayList<>());
+
         date_dimeRV.setAdapter(adapter);
+
 
     }
 

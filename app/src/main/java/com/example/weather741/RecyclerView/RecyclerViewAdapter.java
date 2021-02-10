@@ -8,26 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.weather741.Data.ListItem;
+
+import com.example.weather741.Data.WeatherForecastResult;
 import com.example.weather741.R;
 import java.util.List;
 
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    List<String> list_;
+   List<WeatherForecastResult.ListItem> list_;
 
-    public RecyclerViewAdapter( List<String> list) {
-        updateList(list);
-    }
-
-    public void updateList(List<String> list){
+    public RecyclerViewAdapter( List<WeatherForecastResult.ListItem> list) {
         this.list_ = list;
-        notifyDataSetChanged();
-
     }
-
-
 
 
     @NonNull
@@ -40,7 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txt_ada_time.setText(position);
+        holder.txt_ada_time.setText(list_.get(position).dtTxt);
 
     }
 
