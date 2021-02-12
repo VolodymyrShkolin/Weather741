@@ -16,11 +16,21 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-   List<WeatherForecastResult.ListItem> list_;
+//   List<WeatherForecastResult.City> list_;
+//
+//    public RecyclerViewAdapter( List<WeatherForecastResult.City> list) {
+//        this.list_ = list;
+//    }
 
-    public RecyclerViewAdapter( List<WeatherForecastResult.ListItem> list) {
-        this.list_ = list;
+    List<WeatherForecastResult.ListItem> list_;
+
+    public RecyclerViewAdapter(List<WeatherForecastResult.ListItem> list_) {
+        this.list_ = list_;
     }
+
+
+
+
 
 
     @NonNull
@@ -33,7 +43,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txt_ada_time.setText(list_.get(position).dtTxt);
+
+        holder.txt_ada_time.setText(list_.get(position).getDtTxt());
 
     }
 

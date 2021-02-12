@@ -18,7 +18,7 @@ public class WeatherForecastResult {
 	private int message;
 
 	@SerializedName("list")
-	public List<ListItem> list;
+	private List<ListItem> list ;
 
 	public City getCity(){
 		return city;
@@ -41,7 +41,7 @@ public class WeatherForecastResult {
 	}
 
 
-	public class ListItem{
+	public  class ListItem{
 
 		@SerializedName("dt")
 		public int dt;
@@ -111,6 +111,65 @@ public class WeatherForecastResult {
 
 		public Wind getWind(){
 			return wind;
+		}
+	}
+
+	public static class City{
+
+		@SerializedName("country")
+		private String country;
+
+		@SerializedName("coord")
+		private Coord coord;
+
+		@SerializedName("sunrise")
+		private int sunrise;
+
+		@SerializedName("timezone")
+		private int timezone;
+
+		@SerializedName("sunset")
+		private int sunset;
+
+		@SerializedName("name")
+		public String name;
+
+		@SerializedName("id")
+		private int id;
+
+		@SerializedName("population")
+		private int population;
+
+		public String getCountry(){
+			return country;
+		}
+
+		public Coord getCoord(){
+			return coord;
+		}
+
+		public int getSunrise(){
+			return sunrise;
+		}
+
+		public int getTimezone(){
+			return timezone;
+		}
+
+		public int getSunset(){
+			return sunset;
+		}
+
+		public String getName(){
+			return name;
+		}
+
+		public int getId(){
+			return id;
+		}
+
+		public int getPopulation(){
+			return population;
 		}
 	}
 }
