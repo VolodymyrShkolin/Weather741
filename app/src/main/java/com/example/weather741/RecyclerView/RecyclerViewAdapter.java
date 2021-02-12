@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.weather741.Data.ListItem;
 import com.example.weather741.Data.WeatherForecastResult;
 import com.example.weather741.R;
 import java.util.List;
@@ -22,9 +23,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //        this.list_ = list;
 //    }
 
-    List<WeatherForecastResult.ListItem> list_;
+    List<ListItem> list_;
 
-    public RecyclerViewAdapter(List<WeatherForecastResult.ListItem> list_) {
+    public RecyclerViewAdapter(List<ListItem> list_) {
         this.list_ = list_;
     }
 
