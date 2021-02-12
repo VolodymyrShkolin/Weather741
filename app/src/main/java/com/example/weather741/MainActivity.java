@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     GridLayoutManager gridLayoutManager;
     RecyclerViewAdapter adapter;
 
-    //List<String> data;
 
 
     @Override
@@ -39,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
         date_dimeRV = findViewById(R.id.recyclerView);
         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         date_dimeRV.setLayoutManager(gridLayoutManager);
-//        data = new ArrayList<>();
-//        data.add("sdgf");
-//        data.add("Volodymyr");
-//        data.add("Olena");
-//        data.add("vgrf");
 
+        go();
+
+
+    }
+
+
+    private void go() {
 
         Api api = new Request().buildRetrofitConfig();
         Call<WeatherForecastResult> call = api.getWeatherForecastResult(Api.city, Api.key, Api.cnt);
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                 adapter = new RecyclerViewAdapter(response.body().getList());
+                date_dimeRV.setAdapter(adapter);
+
+
             }
 
             @Override
@@ -63,14 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-       // adapter = new RecyclerViewAdapter(data);
-        date_dimeRV.setAdapter(adapter);
-
-
-    }
-
-
-    private void go() {
 
     }
 }
