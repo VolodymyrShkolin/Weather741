@@ -17,12 +17,6 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-//   List<WeatherForecastResult.City> list_;
-//
-//    public RecyclerViewAdapter( List<WeatherForecastResult.City> list) {
-//        this.list_ = list;
-//    }
-
     List<ListItem> list_;
 
     public RecyclerViewAdapter(List<ListItem> list_) {
