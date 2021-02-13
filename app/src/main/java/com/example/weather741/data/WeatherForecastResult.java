@@ -1,4 +1,4 @@
-package com.example.weather741.Data;
+package com.example.weather741.data;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
@@ -39,9 +39,6 @@ public class WeatherForecastResult {
 	public List<ListItem> getList(){
 		return list;
 	}
-
-
-
 
 
 }

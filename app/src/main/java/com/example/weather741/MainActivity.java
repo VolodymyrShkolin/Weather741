@@ -5,17 +5,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Adapter;
 
 
-import com.example.weather741.API.Api;
-import com.example.weather741.API.Request;
+import com.example.weather741.api.Api;
+import com.example.weather741.api.Request;
 
-import com.example.weather741.Data.WeatherForecastResult;
-import com.example.weather741.RecyclerView.RecyclerViewAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.weather741.data.WeatherForecastResult;
+import com.example.weather741.recyclerview.RecyclerViewAdapter;
 
 import retrofit2.Call;
 import retrofit2.Callback;

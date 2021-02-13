@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Weather741</string>
     <string name="search">search</string>
+    <string name="temp">temp</string>
+    <string name="humidity">humidity</string>
+    <string name="press">press</string>
 </resources>

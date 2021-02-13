@@ -1,6 +1,6 @@
-package com.example.weather741.API;
+package com.example.weather741.api;
 
-import com.example.weather741.Data.WeatherForecastResult;
+import com.example.weather741.data.WeatherForecastResult;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,10 +1,9 @@
-package com.example.weather741.API;
+package com.example.weather741.api;
 
 import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Request {
