@@ -20,7 +20,7 @@ public  class City{
     private int sunset;
 
     @SerializedName("name")
-    public String name;
+    private String name;
 
     @SerializedName("id")
     private int id;

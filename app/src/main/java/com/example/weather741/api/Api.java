@@ -17,5 +17,4 @@ public interface Api {
     Call <WeatherForecastResult> getWeatherForecastResult(@Query("q") String city,
                                                           @Query("appid") String appId,
                                                           @Query("cnt") String cnt );
-
 }

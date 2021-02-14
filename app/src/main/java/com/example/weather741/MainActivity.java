@@ -19,7 +19,6 @@ import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
-
     RecyclerView date_dimeRV;
     GridLayoutManager gridLayoutManager;
     RecyclerViewAdapter adapter;
@@ -33,12 +32,10 @@ public class MainActivity extends AppCompatActivity {
         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         date_dimeRV.setLayoutManager(gridLayoutManager);
 
-        go();
-
-
+        startRequest();
     }
 
-    private void go() {
+    private void startRequest() {
 
         Api api = new Request().buildRetrofitConfig();
         Call<WeatherForecastResult> call = api.getWeatherForecastResult(Api.city, Api.key, Api.cnt);
@@ -49,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
                 adapter = new RecyclerViewAdapter(response.body().getList());
                 date_dimeRV.setAdapter(adapter);
             }
-
             @Override
             public void onFailure(Call<WeatherForecastResult> call, Throwable t) {
-
             }
         });
 

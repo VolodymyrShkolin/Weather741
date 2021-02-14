@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
-
     TextView temp, hum, press;
 
     @Override
@@ -25,8 +24,8 @@ public class SecondActivity extends AppCompatActivity {
         String fHum = intent.getStringExtra("humidity");
         String fPress = intent.getStringExtra("press");
 
-        temp.setText("Temperature: " + fTemp);
-        hum.setText("Humidity: " + fHum);
-        press.setText("Pressure: " + fPress);
+        temp.setText(String.format("Temperature: %s", fTemp));
+        hum.setText(String.format("Humidity: %s", fHum));
+        press.setText(String.format("Pressure: %s", fPress));
     }
 }

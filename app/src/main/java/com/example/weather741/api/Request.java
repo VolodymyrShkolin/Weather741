@@ -8,7 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Request {
 
-
     public Api buildRetrofitConfig(){
         OkHttpClient.Builder httpClient = getBaseHttpConfig();
         retrofit2.Retrofit.Builder retrofit = new retrofit2.Retrofit.Builder()
@@ -16,9 +15,7 @@ public class Request {
                 .client(httpClient.build())
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()));
         return retrofit.build().create(Api.class);
-
     }
-
 
     private OkHttpClient.Builder getBaseHttpConfig(){
         HttpLoggingInterceptor log = new HttpLoggingInterceptor();
@@ -27,6 +24,4 @@ public class Request {
         okHttpClient.addInterceptor(log);
         return okHttpClient;
     }
-
-
 }
