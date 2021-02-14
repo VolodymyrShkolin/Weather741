@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 
 import com.example.weather741.api.Api;
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView date_dimeRV;
     GridLayoutManager gridLayoutManager;
     RecyclerViewAdapter adapter;
+    EditText etCity;
+
+    Button btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +38,22 @@ public class MainActivity extends AppCompatActivity {
         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         date_dimeRV.setLayoutManager(gridLayoutManager);
 
-        startRequest();
+        etCity = findViewById(R.id.etCity);
+
+
+        btnSearch = findViewById(R.id.btnSearch);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String city = etCity.getText().toString();
+                startRequest(city);
+            }
+        });
     }
 
-    private void startRequest() {
-
+    private void startRequest(String city) {
         Api api = new Request().buildRetrofitConfig();
-        Call<WeatherForecastResult> call = api.getWeatherForecastResult(Api.city, Api.key, Api.cnt);
+        Call<WeatherForecastResult> call = api.getWeatherForecastResult(city, Api.key, Api.cnt);
 
         call.enqueue(new Callback<WeatherForecastResult>() {
             @Override
@@ -52,4 +67,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 }
