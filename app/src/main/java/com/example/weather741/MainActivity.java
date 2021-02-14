@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
     GridLayoutManager gridLayoutManager;
     RecyclerViewAdapter adapter;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,24 +38,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
     private void go() {
 
         Api api = new Request().buildRetrofitConfig();
         Call<WeatherForecastResult> call = api.getWeatherForecastResult(Api.city, Api.key, Api.cnt);
 
-
         call.enqueue(new Callback<WeatherForecastResult>() {
             @Override
             public void onResponse(Call<WeatherForecastResult> call, Response<WeatherForecastResult> response) {
-
-
                 adapter = new RecyclerViewAdapter(response.body().getList());
                 date_dimeRV.setAdapter(adapter);
-
-
             }
 
             @Override
