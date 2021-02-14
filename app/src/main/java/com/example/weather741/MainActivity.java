@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.example.weather741.api.Api;
@@ -15,6 +16,8 @@ import com.example.weather741.api.Request;
 
 import com.example.weather741.data.WeatherForecastResult;
 import com.example.weather741.recyclerview.RecyclerViewAdapter;
+
+import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     GridLayoutManager gridLayoutManager;
     RecyclerViewAdapter adapter;
     EditText etCity;
-
     Button btnSearch;
 
     @Override
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         etCity = findViewById(R.id.etCity);
 
-
         btnSearch = findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,13 +54,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void startRequest(String city) {
         Api api = new Request().buildRetrofitConfig();
-        Call<WeatherForecastResult> call = api.getWeatherForecastResult(city, Api.key, Api.cnt);
+        Call<WeatherForecastResult> call = api.getWeatherForecastResult
+                (city, Api.key, Api.cnt, Api.units);
 
         call.enqueue(new Callback<WeatherForecastResult>() {
             @Override
-            public void onResponse(Call<WeatherForecastResult> call, Response<WeatherForecastResult> response) {
-                adapter = new RecyclerViewAdapter(response.body().getList());
-                date_dimeRV.setAdapter(adapter);
+            public void onResponse(@NotNull Call<WeatherForecastResult> call,
+                                   @NotNull Response<WeatherForecastResult> response) {
+                if(response.isSuccessful()) {
+                    adapter = new RecyclerViewAdapter(response.body().getList());
+                    date_dimeRV.setAdapter(adapter);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Sorry, we did't find this city(",
+                            Toast.LENGTH_LONG).show();
+                }
             }
             @Override
             public void onFailure(Call<WeatherForecastResult> call, Throwable t) {

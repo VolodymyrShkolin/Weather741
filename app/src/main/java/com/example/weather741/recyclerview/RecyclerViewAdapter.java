@@ -1,6 +1,5 @@
 package com.example.weather741.recyclerview;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
-
 import com.example.weather741.SecondActivity;
 import com.example.weather741.data.ListItem;
 import com.example.weather741.R;
@@ -35,11 +31,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.txt_ada_time.setText(list_.get(position).getDtTxt());
+        holder.txt_ada_time.setText(String.format("Date and time: %s ",
+                list_.get(position).getDtTxt()));
 
-        String temp = String.format("%s ", list_.get(position).getMain().getTempKf());
-        String hum = String.format("%s ", list_.get(position).getMain().getHumidity());
-        String press = String.format("%s ", list_.get(position).getMain().getPressure());
+        String temp = String.format("Temperature: %s C'", list_.get(position).getMain().getTemp());
+        String hum = String.format("Humidity: %s", list_.get(position).getMain().getHumidity());
+        String press = String.format("Pressure: %s Pa", list_.get(position).getMain().getPressure());
 
         holder.txt_ada_time.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txt_ada_time = itemView.findViewById(R.id.date_time);
+
         }
     }
 }

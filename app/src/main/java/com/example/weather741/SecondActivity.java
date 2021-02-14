@@ -24,8 +24,8 @@ public class SecondActivity extends AppCompatActivity {
         String fHum = intent.getStringExtra("humidity");
         String fPress = intent.getStringExtra("press");
 
-        temp.setText(String.format("Temperature: %s", fTemp));
-        hum.setText(String.format("Humidity: %s", fHum));
-        press.setText(String.format("Pressure: %s", fPress));
+        temp.setText(fTemp);
+        hum.setText(fHum);
+        press.setText(fPress);
     }
 }
