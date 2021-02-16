@@ -34,9 +34,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.txt_ada_time.setText(String.format("Date and time: %s ",
                 list_.get(position).getDtTxt()));
 
-        String temp = String.format("Temperature: %s C'", list_.get(position).getMain().getTemp());
-        String hum = String.format("Humidity: %s", list_.get(position).getMain().getHumidity());
-        String press = String.format("Pressure: %s Pa", list_.get(position).getMain().getPressure());
+        String temp = String.format("Temperature: %s C'.", list_.get(position).getMain().getTemp());
+        String hum = String.format("Humidity: %s.", list_.get(position).getMain().getHumidity());
+        String press = String.format("Pressure: %s Pa.", list_.get(position).getMain().getPressure());
 
         holder.txt_ada_time.setOnClickListener(new View.OnClickListener() {
             @Override
